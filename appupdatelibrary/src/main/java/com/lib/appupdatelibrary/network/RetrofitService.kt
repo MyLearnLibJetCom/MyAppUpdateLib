@@ -4,6 +4,7 @@ import android.util.Log
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
@@ -66,7 +67,10 @@ interface UrlApiService {
     suspend fun getFetchUrl(@Url url : String) : Response<ResponseBody>
 
     @POST
-    suspend fun postFetchUrl(@Url url : String, @Body bodyData : String) : Response<ResponseBody>
+    suspend fun postFetchUrlString(@Url url : String, @Body bodyData : String) : Response<ResponseBody>
+
+    @POST
+    suspend fun postFetchUrlJson(@Url url : String, @Body bodyData : RequestBody) : Response<ResponseBody>
 }
 
 /**
